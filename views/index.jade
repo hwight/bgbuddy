@@ -1,0 +1,43 @@
+html
+  head
+   style.
+     @import url(http://fonts.googleapis.com/css?family=Aclonica);
+     body {
+     font-family: Century Gothic, sans-serif;
+     text-align: center;
+     background-color: rgba(102,152,255,.3);
+     padding: 35px;
+     }
+     div {
+     background-color: white;
+     font-family: Century Gothic, sans-serif;
+     width: 100%;
+     height: 100vh;
+     box-shadow: 10px 10px 5px #888888;
+     }
+     input {
+     text-align: center;
+     }
+     h1 {
+     font-family: Aclonica;
+     font-size: 50px;
+     color: skyBlue;
+     text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+     }
+     button {
+     font-family: Century Gothic, sans-serif;
+     border-radius: 5px;
+     width: 100px;
+     height: 35px;
+     }
+
+  body
+  h1= title
+  p Welcome to #{title}
+  p A website to make diabetes a little more fun
+
+  form#formSignIn(name="adduser",method="get",action="/newuser")
+      button#btnSubmit(type="submit") Sign Up!
+
+  form#formSignUp(name="adduser",method="get",action="/signIn")
+      button#btnSubmit(type="submit") Sign In!

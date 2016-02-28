@@ -1,0 +1,285 @@
+doctype
+html
+  head
+    title #{title} - My Site
+    link(rel='stylesheet', href='/stylesheets/index.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script (src = "javascripts/updatePoints.js")
+  body
+    block content
+      nav.navbar.navbar-default.navbar-fixed-top.topnav.navBackground(role="navigation")
+      div.container.topnav
+          div.navbar-header
+            a.navbar-brand(href="#Home") BGbuddy
+          ul.nav.navbar-nav.navbar-left
+            li
+              a Sign Out
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href="#ExerciseLog") Exercise Log
+            li
+              a(href="#FoodLog") Food Log
+            li
+              a(href="#BGLog") BG Log
+            li
+              a(href="#PetStore") Pet Store
+
+
+
+      div#Home
+        div.container-fluid
+          div.col-md-12
+            div.row
+              div.col-md-3
+                div#newsFeed
+                  div.jumbotron(id="newFeedJumbo")
+                    div#greeting
+                      h3 Hello,
+                      h3#name #{user.username}
+                      if user.level == "high"
+                        p Great job checking your blood sugars!
+                        p It's high. Have you had insulin?
+                      else if user.level == "low"
+                        p Great job checking your blood sugars! You have gained 10 points!
+                        p It's low. Have you eaten the proper foods?
+                      else if user.level == "great"
+                        p Great job checking your blood sugars! You have gained 10 points!
+                        p It looks like you are doing great!
+
+                      if user.points > 0
+                        p Great job exercising! You gained #{user.points} points
+
+
+              div.col-md-6
+                div.jumbotron.text-center
+                  div.row
+                    div.col-md-6.text-center
+                      img.thumbnail(src="http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035")
+                    div.col-md-6
+                      div.container-fluid.text-center
+                        h2 Kip is doing OK!
+                        button.btn.btn-lg.medicineButton.buttonInflate(href="#") I took my medicine!
+              div.col-md-3
+                div.jumbotron
+                  div.row-fluid
+                    h2 Your Savings:
+                    h2.points #{user.score}
+
+
+      div#ExerciseLog
+        div.container-fluid.fullHeight
+          div.col-md-12
+            div.col-md-6
+              div.jumbotron.fullHeight
+                div.row.text-center
+                  h2.jumbotronTitle Your Recent Exercise
+                div.row#jumbotronTitleRow
+                  div.table-responsive
+                    table.table.table-bordered.exerciseTable
+                      tr
+                        td Date
+                        td Time
+                        td Activity
+                        td Calories
+                      tr
+                        td 25-02-2016
+                        td 11:00am
+                        td Soccer
+                        td 110
+                      tr
+                        td 26-02-2016
+                        td 4:30pm
+                        td Leg Day
+                        td 32049
+                div.row.text-center
+                  button.btn.btn-lg.addExerciseButton.buttonInflate(data-toggle="modal", data-target="#exerciseModal") Add exercise
+                    i.fa.fa-plus
+
+            div.col-md-6
+              div.jumbotron.greenBorder(id="exerciseTipsJumbo")
+                div.row.text-center
+                  h2.styledWhiteText Exercise Tips
+                p#exerciseTipsPar Exercise is a key component of everyday life.  We exercise to stay healthy! <br /> Keep exercising to stay on top of your game! <br /> Here are some ways that you can exercise today:
+                  div.row
+                    div.col-md-4.col-md-offset-3
+                      ul.whiteUnordered
+                        li Soccer
+                        li Jogging
+                        li Play on the playground
+                        li Run around a chair 30 times
+
+      div#FoodLog
+        div.container-fluid.fullHeight
+          div.col-md-12
+
+            div.col-md-6
+              div.row
+                div.thumbnail
+                    img.img.img-fluid.foodPyramid(src="http://4vector.com/i/free-vector-food-pyramid-vector_004798_food1.jpg")
+                    div.caption.text-center
+                      h2.orangeText Follow the Pyramid!
+
+            div.col-md-6
+              div.jumbotron#foodJumbo
+                div.row.text-center
+                  h2.orangeText.resizedH2 Food
+                  h2.jumbotronTitle What have you eaten lately?
+                div.row#jumbotronTitleRow
+                  div.table-responsive
+                    table.table.table-bordered.foodTable
+                      tr
+                        td Time
+                        td Food
+                      tr
+                        td 11:42am
+                        td Banana
+                      tr
+                        td 3:59pm
+                        td Cow
+                      tr
+                        td 7:22pm
+                        td Pheasant
+                div.row.text-center
+                  button.btn.btn-lg.addExerciseButton.buttonInflate(data-toggle="modal", data-target="#foodModal") Add food
+                    i.fa.fa-plus
+
+
+
+
+      div#BGLog
+        div.container-fluid
+          div.col-md-12
+            div.col-md-6
+              div.row
+                div.jumbotron.text-center#BGJumbotron
+                  h2 What's your BG level?
+                  form(method="post",action='/checkBG')
+                    div.form-group
+                        label(for="BGLevel") BGLevel (mg/dL):
+                        input(type="number",name="level", min="40", max="180", placeholder="40-180", id="BGInputField")
+                        input(type='hidden',name='objectID',value= user._id)
+                        input(type='hidden',name='score',value= user.score)
+                        input(type='hidden',name='userName',value= user.userName)
+                        button.btn.buttonInflate( type="submit", id="BGSubmitButton") Submit
+
+
+
+      div#PetStore
+        div.container-fluid
+          div.col-md-12
+            div.col-md-8
+              div.jumbotron.text-center
+                div.row
+                  div.col-md-6
+                    img.thumbnail(src="http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035", id="storePetPhoto")
+                  div.col-md-6
+                    h2.purpleText Purchase swag for
+                    h2.resizedH2.buddyName Kip!
+                    button.btn.btn-default.btn-lg.buttonInflate(id="browseStoreButton") Browse Buddy Store
+            div.col-md-4
+                div.jumbotron.text-center
+                  h2.purpleText.showcaseLabel Swag Showcase:
+                  img.thumbail(src="http://cliparts.co/cliparts/kcK/B85/kcKB85z7i.png", id="swagPromoImage")
+                  h2.showcaseItem Bodacious Ball
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.modal.fade(role="dialog", id="foodModal", aria-labelledby="myModalLabel", aria-hidden="true")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        button.close(type="button", data-dismiss="modal")
+          span(aria-hidden="true")
+            &times;
+          span.sr-only Close
+        h2.modal-title.foodModalTitle Select your foods
+    div.modal-body
+      div.form-group
+        label.col-sm-2.control-label Food
+        div.col-sm-3
+          div.drop-down
+            button.btn.btn-default.dropdown-toggle(type="button", id="dropDown1", data-toggle="dropdown", aria-haspopup="true", aria-expanded="true") Foods
+              span.caret
+            ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+              li
+                a Vegetables
+              li
+                a Fruits
+              li
+                a Oatmeal
+              li
+                a Candy
+              li
+                a Popcorn
+              li
+                a Sweet Potatoes
+              li
+                a Low-Fat Milk
+              li
+                a Chicken
+              li
+                a Natural Juice
+              li
+                a Yogurt
+              li
+                a Whole Wheat
+              li
+                a Candy
+              li
+                a Soda
+              li
+                a Fast Food
+              li
+                a Potatoes
+              li
+                a 2% Milk
+              li
+                a Fatty Meats
+              li
+                a Processed Grain
+              li
+                a Pork Bacon
+              li
+                a Cheese
+              li
+                a Sugar Added Juice
+
+
+
+div.modal.fade(id="exerciseModal", role="dialog")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        button.close(type="button", data-dismiss="modal") &times;
+        h2.modal-title Enter your Activities
+      div.modal-body
+          form(action = "/addExercise", method = "post")
+            input(type='hidden',name='objectID',value= user._id)
+            input(type='hidden',name='score',value= user.score)
+            input(type='hidden',name='userName',value= user.userName)
+            p
+              strong Input Activity
+            input.modalField(type="text", name="activityName")
+            p
+              strong Hours
+            input.modalField(type="number", name="hours", min="0", max="8")
+            p
+              strong Minutes
+            input.modalField(type="number", name="minutes", min="0", max="59")
+            div.modal-footer
+              button.btn.buttonInflate.exerciseModalSubmitButton(type="submit", value="Submit") Submit

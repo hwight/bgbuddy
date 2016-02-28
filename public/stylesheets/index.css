@@ -1,0 +1,460 @@
+
+.navbar-brand
+{
+    background: rgba(100, 100, 100, .2);
+}
+
+#greeting
+{
+    padding: 3px 6px 3px 6px;
+    background: rgba(100, 100, 100, .2);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+#name
+{
+    font-size: 4em;
+    color: rgba(0, 0, 200, .6);
+    margin-top: 0;
+    text-align: center;
+}
+
+.container-fluid, .row
+{
+    padding: 0px 0px 0px 0px;
+}
+.points
+{
+    color: rgba(0, 0, 200, .6);
+}
+
+.row
+{
+    width: 100%;
+}
+
+
+.topnav
+{
+  font-family: Comic Sans MS, sans-serif;
+  font-size: 1.1em;
+  border-bottom: rgba(0, 0, 0, 0);
+}
+
+.nav .navbar .nav > li > a
+{
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color:  #ddd;
+}
+
+.navBackground
+{
+    background: rgba(180, 180, 180, .6);
+}
+
+
+/* Section Code */
+
+
+#Home, #ExerciseLog, #FoodLog, #BGLog, #PetStore
+{
+    padding-top: 100px;
+    height: 700px;
+    background: cover;
+}
+
+#Home
+{
+    background: rgba(0, 0, 200, .6);
+}
+
+#ExerciseLog
+{
+    background: rgba(0, 180, 0, .6);
+}
+
+#FoodLog
+{
+    background: rgba(255, 100, 0, .6);
+}
+
+#BGLog
+{
+    background: rgba(32, 178, 170, .6)
+}
+
+#PetStore
+{
+    background: rgba(153, 50, 204, .6)
+
+}
+
+#newFeedJumbo
+{
+    padding: 15px 15px 15px 15px;
+}
+
+.medicineButton
+{
+    width: 100%;
+    margin-top: 20px;
+    background: rgba(0, 0, 200, .6);
+    color: white;
+}
+
+.medicineButton:focus, .addExerciseButton:focus, .addFoodButton:focus, #BGSubmitButton:focus, #browseStoreButton:focus, .submitFoodButton:focus
+{
+    color: white !important;
+}
+
+.medicineButton:hover
+{
+    color: rgba(0, 0, 200, .8) !important;
+    background: white;
+    border: 2px solid rgba(0, 0, 200, .6);
+    font-weight: bold;
+}
+
+.btn:hover, .btn-lg:hover, .btn-default:hover, .btn-primary:hover
+{
+    text-decoration: none;
+}
+
+.buttonInflate, .interactiveImg
+{
+  -webkit-transition: all 0.1s linear;
+          transition: all 0.1s linear;
+}
+
+.buttonInflate:hover
+{
+  -webkit-transform: scale(1.05);
+     -moz-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+       -o-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+
+.exerciseTable, .exerciseTable td
+{
+    border: 2px solid rgba(0, 180, 0, .6);
+}
+
+.jumbotronTitleRow
+{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.jumbotronTitle
+{
+    padding-bottom: 10px;
+}
+
+
+.fullHeight
+{
+    height: 100%;
+}
+
+.addExerciseButton
+{
+    width: 60%;
+    margin-top: 20px;
+    background: rgba(0, 180, 0, .6);
+    color: white;
+}
+
+.exerciseModalSubmitButton
+{
+    background: rgba(0, 180, 0, .6);
+    color: white;
+}
+
+.exerciseModalSubmitButton:hover
+{
+    background: white;
+    color: rgba(0, 180, 0, .6) !important;
+    border: 2px solid rgba(0, 180, 0, .8);
+}
+
+
+
+.addExerciseButton:hover, exerciseModalSubmitButton:hover
+{
+    color: rgba(0, 180, 0, .8) !important;
+    background: white;
+    border: 2px solid rgba(0, 180, 0, .6);
+    font-weight: bold;
+}
+
+.foodModalTitle
+{
+    color: rgba(255, 100, 0, .6);
+}
+
+.submitFoodButton
+{
+    background: rgba(255, 100, 0, .6);
+    color: white;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.submitFoodButton:hover
+{
+    color: rgba(255, 100, 0, .6) !important;
+    background: white;
+    border: 2px solid rgba(255, 100, 0, .6);
+    font-weight: bold;
+}
+
+
+
+.greenBorder
+{
+    border: 2px solid white;
+}
+
+.styledWhiteText
+{
+    font-family: Comic Sans MS, sans-serif;
+    color: white !important;
+    font-weight: bold;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+
+#exerciseTipsPar, #exerciseTipsPar>ul
+{
+    color: white;
+    font-size: 1.5;
+    margin: 25px 25px 25px 25px;
+}
+
+.whiteUnordered, .whiteUnordered>li
+{
+    color: white;
+    font-size: 1.8 !important;
+}
+
+.foodTable, .foodTable td
+{
+    border: 2px solid rgba(255, 100, 0, .6);
+}
+
+.addFoodButton
+{
+    width: 60%;
+    margin-top: 20px;
+    background: rgba(255, 100, 0, .6);
+    color: white;
+}
+
+.addFoodButton:hover
+{
+    color: rgba(255, 100, 0, .8) !important;
+    background: white;
+    border: 2px solid rgba(255, 100, 0, .6);
+    font-weight: bold;
+}
+
+.foodPyramid
+{
+    width: 60%;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.whiteText
+{
+    color: white;
+}
+
+.orangeText
+{
+    font-family: Comic Sans MS, sans-serif;
+    color: rgba(255, 100, 0, .8);
+}
+
+
+.resizedH2
+{
+    font-size: 5em;
+    margin-bottom: 30px;
+}
+
+
+#foodJumbo
+{
+    padding-top: 0px;
+}
+
+
+#BGJumbotron>h2
+{
+    margin-bottom: 30px;
+}
+
+#BGSubmitButton
+{
+    background: rgba(32, 178, 170, .6);
+}
+
+#BGInputField
+{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 15%;
+}
+
+#BGSubmitButton:hover
+{
+    border: 2px solid rgba(32, 178, 170, .6);
+    color: rgba(32, 178, 170, .8);
+    background: white;
+}
+
+#browseStoreButton
+{
+    background: rgba(153, 50, 204, .6);
+    color: white;
+    margin-top: 40px;
+}
+
+#browseStoreButton:hover
+{
+    border: 2px solid rgba(153, 50, 204, .6);
+    color: rgba(153, 50, 204, .8);
+    background: white;
+}
+
+#storePetPhoto
+{
+    width: 100%;
+
+}
+
+.purpleText
+{
+    color: rgba(153, 50, 204, .8);
+    font-size: 2.5em;
+}
+
+#swagPromoImage
+{
+    width: 60%;
+    border: 2px solid rgba(153, 50, 204, .6);
+    padding: 15px 15px 15px 15px;
+}
+
+.buddyName
+{
+    color: rgba(0, 0, 200, .8);
+    font-weight: bold;
+}
+
+.showcaseLabel
+{
+    font-size: 1.8em;
+    margin-bottom: 30px;
+}
+
+.showcaseItem
+{
+    font-size: 2.5em;
+    color: rgba(0, 180, 0, .6);
+}
+
+.modalField
+{
+    margin-bottom: 10px;
+}
+
+.storeImage
+{
+    width: 50px;
+    text-align: center;
+}
+
+
+#storeBody
+{
+    max-width: 800px;
+    width: 100%;
+}
+
+.purchaseButton
+{
+    margin-top:10px;
+    background: rgba(153, 50, 204, .6);
+    color: white;
+}
+
+.purchaseButton:hover
+{
+    border: 1px solid rgba(153, 50, 204, .6);
+    color: rgba(153, 50, 204, .8);
+    background: white;
+}
+
+.modal
+{
+    background: rgba(0, 0, 0, .5);
+}
+
+
+.interactiveImg
+{
+  color: rgba(0, 0, 0, 0);
+  font-size: 2.5em;
+  text-align: center;
+  height: 500px;
+}
+
+.interactiveImg:hover
+{
+  color: rbga(250, 250, 250, 1);
+
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(rgba(0, 250, 0, .55)), to(rgba(0, 0, 0, .60)));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, rgba(0, 250, 0, .75), rgba(0, 0, 0, .60));
+
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, rgba(0, 250, 0, .55), rgba(0, 0, 0, .60));
+
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, rgba(0, 250, 0, .55), rgba(0, 0, 0, .60));
+}
+
+@media(max-width:1300px)
+{
+    .medicineButton
+    {
+        font-size: 1em !important;
+    }
+
+    .invisibleMeds
+    {
+        visibility: hidden;
+    }
+
+}
+
+.buddyJumbo
+{
+    margin-top: 75px;
+}
+
+.petPic
+{
+  width: 90%;
+}

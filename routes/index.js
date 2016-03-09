@@ -1,3 +1,5 @@
+
+
 var express = require('express');
 var router = express.Router();
 
@@ -5,6 +7,7 @@ var bloodsugar = [];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log("routed here");
   res.render('index', { title: 'BgBuddy' });
 });
 
@@ -30,7 +33,8 @@ router.get('/signIn', function(req, res) {
 });
 
 
-router.post('/addExercise',function(req,res){
+router.post('/addExercise',function(req,res)
+{
   var userId = req.body.objectID;
   var username = req.body.username;
   var minutes = req.body.minutes;
@@ -44,7 +48,8 @@ router.post('/addExercise',function(req,res){
   var db = req.db;
   var collection = db.get('usercollection');
 
-  collection.findAndModify({
+  collection.findAndModify(
+  {
       "query": { "_id": userId},
 
       "update":
@@ -112,7 +117,7 @@ router.post('/checkBoxes', function(req,res){
     });
 
 
-//when user enters blood sugar
+// When user enters blood sugar
 router.post('/checkBG',function(req,res){
   var userId = req.body.objectID;
   var level = req.body.level;
@@ -125,47 +130,45 @@ router.post('/checkBG',function(req,res){
   bloodsugar.push(entry);
 
 
+    var data = "great";
 
+    if (level < 70)
+    {
+      data = "low";
+    }
+    else if (level > 140)
+    {
+      data = "high";
+    }
 
+    var db = req.db;
+    var collection = db.get('usercollection');
 
+    collection.findAndModify({
+        "query": { "_id": userId},
 
-  var data = "great";
+        "update":
+        {
+          $set:
+          {
+            "score" : score,
 
-  if (level < 70)
-  {
-    data = "low";
-  }
-  else if (level > 140)
-  {
-    data = "high";
-  }
-
-  var db = req.db;
-  var collection = db.get('usercollection');
-
-  collection.findAndModify({
-      "query": { "_id": userId},
-
-      "update":
-      {
-        $set:{
-          "score" : score,
 
           }
-      },
-      "upsert" :true,
-      "new" : true
-      }, function (err, doc) {
-      if (err) {
-          // If it failed, return error
-          res.send("There was a problem adding the information to the database.");
-      }
-      else {
-          // And forward to success page
-          var userData = {"score":score, "username": "haley", "level":data, "bloodsugar":bloodsugar, "_id":userId};
-          res.render('homepage', {user : userData});
-      }
-  });
+        },
+        "upsert" :true,
+        "new" : true
+        }, function (err, doc) {
+        if (err) {
+            // If it failed, return error
+            res.send("There was a problem adding the information to the database.");
+        }
+        else {
+            // And forward to success page
+            var userData = {"score":score, "username": "haley", "level":data, "bloodsugar":bloodsugar, "_id":userId};
+            res.render('homepage', {user : userData});
+        }
+    });
 
 
 });
@@ -255,15 +258,36 @@ router.post('/adduser', function(req, res) {
     var userEmail = req.body.useremail;
     var pass = req.body.password;
     var score = 0;
+    var petName = req.body.petName;
+    var diabetesType = req.body.diabetesType;
+    var inventory = [];
+    var birthdayDay = req.body.birthdayDay;
+    var birthdayMonth = req.body.birthdayMonth;
+    var birthdayYear = req.body.birthdayYear;
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var bgLevels = [];
     // Set our collection
     var collection = db.get('usercollection');
+
+
+    // Create a Date Object out of the birthday data!!!!!!
+
+
 
     // Submit to the DB
     collection.insert({
         "username" : username,
         "email" : userEmail,
         "password" : pass,
-        "score":score
+        "score":score,
+        "petName": petName,
+        "diabetesType": diabetesType,
+        "inventory": inventory,
+        "birthday": birthday,
+        "firstName": firstName,
+        "lastName": lastName,
+        "bgLevels": bgLevels
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
@@ -277,7 +301,6 @@ router.post('/adduser', function(req, res) {
         }
     });
 });
-
 
 
 module.exports = router;

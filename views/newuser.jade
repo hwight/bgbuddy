@@ -51,36 +51,36 @@ html
           div.jumbotron
             form(action='/adduser', method = "post")
               fieldset.form-group
-                label(for="usernameInput") Username
+                label(for="username") Username
                 input.form-control.inputField(type='text', name='username', placeholder="Username")
 
               fieldset.form-group
-                label(for="passwordInput") Password
+                label(for="password") Password
                 input.form-control.inputField(type='password', name='password', placeholder="Password")
 
               fieldset.form-group
-                label(for="emailInput") Email
+                label(for="email") Email
                 input.form-control.inputField(type='email', name='email', placeholder="spongebob@bikinibottom.com")
 
               fieldset.form-group
-                label(for="firstNameInput") First Name
+                label(for="firstName") First Name
                 input.form-control.inputField(type='text', name='firstName', placeholder="Spongebob")
 
               fieldset.form-group
-                label(for="lastNameInput") Last Name
+                label(for="lastName") Last Name
                 input.form-control.inputField(type='text', name='lastName', placeholder="Squarepants")
 
               fieldset.form-group
-                label(for="birthdayInput") Birthday
+                label(for="birthday") Birthday
                 input.form-control.inputField(type='date', name='birthday')
 
               div.form-group
-                label(for="typeInput") Diabetes Type
+                label(for="diabetesType") Diabetes Type
                 label.radioButton
-                  input.radio-inline(type="radio", name="typeInput", value="Type 1") 
+                  input.radio-inline(type="radio", name="diabetesType", value="Type 1") 
                   | Type 1
                 label.radioButton
-                  input.radio-inline(type="radio", name="typeInput", value="Type 2") 
+                  input.radio-inline(type="radio", name="diabetesType", value="Type 2") 
                   | Type 2
 
               button.btn.btn-primary.submitButton(type='submit') Submit

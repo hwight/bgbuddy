@@ -255,7 +255,7 @@ router.post('/adduser', function(req, res) {
 
     // Get our form values. These rely on the "name" attributes
     var username = req.body.username;
-    var userEmail = req.body.useremail;
+    var email = req.body.email;
     var pass = req.body.password;
     var score = 0;
     var petName = req.body.petName;
@@ -265,7 +265,7 @@ router.post('/adduser', function(req, res) {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var bgLevels = [];
-    
+
     // Set our collection
     var collection = db.get('usercollection');
 
@@ -274,7 +274,7 @@ router.post('/adduser', function(req, res) {
     // Submit to the DB
     collection.insert({
         "username" : username,
-        "email" : userEmail,
+        "email" : email,
         "password" : pass,
         "score":score,
         "petName": petName,

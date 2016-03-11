@@ -1,43 +1,122 @@
 html
   head
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
    style.
-     @import url(http://fonts.googleapis.com/css?family=Aclonica);
+     @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
      body {
-     font-family: Century Gothic, sans-serif;
-     text-align: center;
-     background-color: rgba(102,152,255,.3);
-     padding: 35px;
+     font-family: 'Time New Roman';
+     background-color: rgb(0, 180, 0);
      }
-     div {
-     background-color: white;
-     font-family: Century Gothic, sans-serif;
-     width: 100%;
-     height: 100vh;
-     box-shadow: 10px 10px 5px #888888;
-     }
-     input {
-     text-align: center;
-     }
-     h1 {
-     font-family: Aclonica;
-     font-size: 50px;
-     color: skyBlue;
-     text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
-     }
-     button {
-     font-family: Century Gothic, sans-serif;
-     border-radius: 5px;
-     width: 100px;
-     height: 35px;
-     }
+     h1
+      {
+      font-family: 'PT Sans Narrow', serif;
+      letter-spacing: 2px;
+      font-size: 13em;
+      color: black;
+      }
+      h4
+      {
+        color: rgba(10, 10, 10, 1);
+        font-size: 1.5em;
+      }
+     .headerRow
+      {
+      padding: 0px 0px 20px 0px;
+      text-align: center;
+      width: 100%; 
+      margin: 0px 0px 0px 0px;
+      border-bottom: 1px white solid;
+      max-height: 500px;
+      height: 100%;
+      }
+      hr
+      {
+        width: 60%;
+      }
+      .linearGradient 
+      {
+          background: white; /* For browsers that do not support gradients */
+          background: -webkit-linear-gradient(rgb(0, 191, 255), background: rgb(0, 180, 0));/* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* Standard syntax */
+      }
+      .radialGradient 
+      {
+          background: white; /* For browsers that do not support gradients */
+          background: -webkit-radial-gradient(white, rgb(0, 180, 0)); /* Safari 5.1 to 6.0 */
+          background: -o-radial-gradient(white, rgb(0, 180, 0)); /* For Opera 11.6 to 12.0 */
+          background: -moz-radial-gradient(white, rgb(0, 180, 0)); /* For Firefox 3.6 to 15 */
+          background: radial-gradient(white, rgb(0, 180, 0)); /* Standard syntax */
+        }
+      .jumbotron
+        {
+          margin: 20px 20px 20px 20px;
+          border-radius: 20px;
+          margin-top: 50px;
+        }
+        .buttonContainer
+          {
+          padding: 20px 20px 20px 20px;
+          text-align: center;
+          }
+        .nativeButton
+          {
+          background: transparent;
+          border: 2px white solid;
+          width: 60%;
+          margin-top: 50px;
+          height: 100px;
+          font-size: 2em;
+          color: white;
+          }
+          .buttonInflate:hover
+          {
+            -webkit-transform: scale(1.05);
+               -moz-transform: scale(1.05);
+                -ms-transform: scale(1.05);
+                 -o-transform: scale(1.05);
+                    transform: scale(1.05);
+          }
+          .buttonInflate
+          {
+            -webkit-transition: all 0.1s linear;
+                    transition: all 0.1s linear;
+          }
+          .nativeButton:hover
+            {
+              border: 2px purple solid;
+              color: purple;
+            }
+            .cloud
+              {
+                width: 100%;
+                margin-top: 30px;
+              }
 
   body
-  h1= title
-  p Welcome to #{title}
-  p A website to make diabetes a little more fun
+    div.row.headerRow.linearGradient
+      div.col-md-12
+        div.col-md-3
+          img(src="http://www.clipartbest.com/cliparts/Rid/g7R/Ridg7R4yT.png")
+        div.col-md-6
+          h1 BGbuddy
+          hr
+          h4 A website to make diabetes a little more fun
+        div.col-md-3
+          img.cloud(src="http://www.clipartbest.com/cliparts/jTx/rMa/jTxrMa8TE.png")
 
-  form#formSignIn(name="adduser",method="get",action="/newuser")
-      button#btnSubmit(type="submit") Sign Up!
 
-  form#formSignUp(name="adduser",method="get",action="/signIn")
-      button#btnSubmit(type="submit") Sign In!
+
+    div.row
+      div.col-md-12
+        div.col-md-6
+          div.buttonContainer
+            form#formSignIn(name="adduser",method="get",action="/newuser")
+              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign Up!
+        div.col-md-6
+          div.buttonContainer
+            form#formSignUp(name="adduser",method="get",action="/signIn")
+              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign In!

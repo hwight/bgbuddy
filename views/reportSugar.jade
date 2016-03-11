@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  p Great job checking your blood sugars!
+  p It looks like you're blood sugar is #{data.level}
+
+  if data.level == "high"
+    p Have you had insulin?
+  else if data.level == "low"
+    p Have you eaten the proper foods?
+  else
+    p It looks like you are doing great! You have gained 10 points

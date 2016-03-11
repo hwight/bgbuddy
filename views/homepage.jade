@@ -1,0 +1,408 @@
+doctype
+html
+  head
+    title #{title} - My Site
+    link(rel='stylesheet', href='/stylesheets/index.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(type="text/javascript", src="https://www.gstatic.com/charts/loader.js")
+    script(type="text/javascript", src="/javascripts/BMI.js")
+    script(type="text/javascript", src="/javascripts/index.js")
+  body
+    block content
+      nav.navbar.navbar-default.navbar-fixed-top.topnav.navBackground(role="navigation")
+        div.container.topnav
+          div.navbar-header
+            a.navbar-brand(href="#Home") BGbuddy
+          ul.nav.navbar-nav.navbar-left
+            li
+              a Sign Out
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href="#ExerciseLog") Exercise Log
+            li
+              a(href="#FoodLog") Food Log
+            li
+              a(href="#BGLog") BG Log
+            li
+              a(href="#PetStore") Pet Store
+
+
+
+      div#Home
+        div.container-fluid
+          div.col-md-12
+            div.row
+              div.col-md-3
+                div#newsFeed
+                  div.jumbotron(id="newFeedJumbo")
+                    div#greeting
+                      h3 Good afternoon,
+                      h3#name Haley
+                      if user.level == "high"
+                        p Great job checking your blood sugars!
+                        p It's high. Have you had insulin?
+                      else if user.level == "low"
+                        p Great job checking your blood sugars! You have gained 10 points!
+                        p It's low. Have you eaten the proper foods?
+                      else if user.level == "great"
+                        p Great job checking your blood sugars! You have gained 10 points!
+                        p It looks like you are doing great!
+
+                      if user.points > 0
+                        p Great job exercising! You gained #{user.points} points
+
+              div.col-md-6
+                div.jumbotron.text-center
+                  div.row
+                    div.col-md-6.text-center
+                      img.thumbnail.petPic(src="http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035")
+                    div.col-md-6
+                      div.container-fluid.text-center
+                        h2 Winston is doing OK!
+              div.col-md-3
+                div.jumbotron
+                  div.row-fluid
+                    h2 Your Savings:
+                    h2.points #{user.score} pts
+
+      div#ExerciseLog
+        div.container-fluid.fullHeight
+          div.col-md-12
+            div.col-md-6
+              div.jumbotron.fullHeight
+                div.row.text-center
+                  h2.jumbotronTitle Your Recent Exercise
+                div.row#jumbotronTitleRow
+                  div.table-responsive
+                    table.table.table-bordered.exerciseTable
+                      tr
+                        td Date
+                        td Time
+                        td Activity
+                        td Calories
+                      tr
+                        td 25-02-2016
+                        td 11:00am
+                        td Soccer
+                        td 110
+                      tr
+                        td 26-02-2016
+                        td 4:30pm
+                        td Leg Day
+                        td 32049
+                div.row.text-center
+
+                  button.btn.btn-lg.addExerciseButton.buttonInflate(data-toggle="modal", data-target="#exerciseModal") Add exercise
+                    i.fa.fa-plus
+
+            div.col-md-6
+              div.thumbnail.text-center
+                img.img-responsive.img-rounded(src="https://images.unsplash.com/photo-1447760912502-6aa102d373c2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=bee183c3c13d429ed8ae62b86e2ce02b")
+
+      div#FoodLog
+        div.container-fluid.fullHeight
+          div.col-md-12
+
+            div.col-md-6
+              div.row
+                div.thumbnail
+                    img.img.img-fluid.foodPyramid(src="http://4vector.com/i/free-vector-food-pyramid-vector_004798_food1.jpg")
+                    div.caption.text-center
+                      h2.orangeText Follow the Pyramid!
+
+
+            div.col-md-6
+              div.jumbotron#foodJumbo
+                div.row.text-center
+                  h2.orangeText.resizedH2 Food
+                  h2.jumbotronTitle What have you eaten lately?
+                div.row#jumbotronTitleRow
+                  div.table-responsive
+                    table.table.table-bordered.foodTable
+                      tr
+                        td Time
+                        td Food
+                      tr
+                        td 11:42am
+                        td Banana
+                      tr
+                        td 3:59pm
+                        td Cow
+                      tr
+                        td 7:22pm
+                        td Pheasant
+                div.row.text-center
+                  button.btn.btn-lg.addExerciseButton.buttonInflate(data-toggle="modal", data-target="#foodModal") Add food
+                    i.fa.fa-plus
+
+
+
+
+      div#BGLog
+        div.container-fluid
+          div.col-md-12
+            div.col-md-6
+              div.row
+                div.jumbotron.text-center#BGJumbotron
+                  h2 What's your BG level?
+                    form(method="post",action='/checkBG')
+                      div.form-group
+                          label(for="BGLevel") BGLevel (mg/dL):
+                          input(type="number",name="level", min="40", max="180", placeholder="40-180", id="BGInputField")
+                          input(type='hidden',name='objectID',value= user._id)
+                          input(type='hidden',name='score',value= user.score)
+                          input(type='hidden',name='username',value= user.username)
+                          button.btn.buttonInflate( type="submit", id="BGSubmitButton") Submit
+
+            div.col-md-6
+              div.jumbotron
+                div(id="chart_div")
+
+
+
+      div#PetStore
+        div.container-fluid
+          div.col-md-12
+            div.col-md-8
+              div.jumbotron.text-center
+                div.row
+                  div.col-md-6
+                    img.thumbnail(src="http://vignette2.wikia.nocookie.net/pokemon/images/b/b1/025Pikachu_XY_anime_3.png/revision/latest?cb=20140902050035", id="storePetPhoto")
+                  div.col-md-6
+                    h2.purpleText Purchase swag for
+                    h2.resizedH2.buddyName Winston!
+                    button.btn.btn-default.btn-lg.buttonInflate(id="browseStoreButton", data-toggle="modal", data-target="#storeModal") Browse Buddy Store
+            div.col-md-4
+                div.jumbotron.text-center
+                  h2.purpleText.showcaseLabel Swag of the Week:
+                  img.thumbail(src="http://cliparts.co/cliparts/kcK/B85/kcKB85z7i.png", id="swagPromoImage")
+                  h2.showcaseItem Bodacious Ball
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.modal.fade(role="dialog", id="foodModal", aria-labelledby="myModalLabel", aria-hidden="true")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        button.close(type="button", data-dismiss="modal")
+          span(aria-hidden="true")
+            &times;
+          span.sr-only Close
+        h2.modal-title.foodModalTitle.text-center Indicate which foods you've had
+      div.modal-body
+        div.row
+          form(action="/checkBoxes", method="post")
+              input(type='hidden',name='objectID',value= user._id)
+              input(type='hidden',name='score',value= user.score)
+              input(type='hidden',name='username',value= user.username)
+              label.checkbox-inline
+                input.checkBox(type="checkbox", name="Food", value="20")
+                | Vegetables
+
+                div.checkbox
+                  label.checkbox-inline
+                    input.checkBox(type="checkbox", name="Food", value="15")
+                    | Fruits
+                div.checkbox
+                  label.checkbox-inline
+                    input.checkBox(type="checkbox", name="Food", value="20")
+                    | Oatmeal
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="5")
+                    | Candy
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="5")
+                    | Popcorn
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="18")
+                    | Sweet Potatoes
+
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="20")
+                    | Low-Fat Milk
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="16")
+                    | Chicken
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="16")
+                    | Natural Juice
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="15")
+                    | Yogurt
+              div.col-xs-6
+                div.checkbox
+                  label.checkbox-inline
+                    input.checkBox(type="checkbox", name="Food", value="15")
+                    | Whole Wheat
+                div.checkbox
+                  label.checkbox-inline
+                    input.checkBox(type="checkbox", name="Food", value="5")
+                    | Soda
+                div.checkbox
+                  label.checkbox-inline
+                    input.checkBox(type="checkbox", name="Food", value="0")
+                    | Fast Food
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="12")
+                    | Potatoes
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="10")
+                    | 2% Milk
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="10")
+                    | Fatty Meats
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="5")
+                    | Processed Grain
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="8")
+                    | Pork Bacon
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="8")
+                    | Cheese
+                div.checkbox
+                  label
+                    input.checkBox(type="checkbox", name="Food", value="5")
+                    | Sugar Added Juice
+
+
+              button.btn.btn-lg.submitFoodButton.buttonInflate(type="submit", value="Submit") Submit
+
+
+
+
+
+
+
+
+
+
+div.modal.fade(id="exerciseModal", role="dialog")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        button.close(type="button", data-dismiss="modal") &times;
+        h2.modal-title Enter your Activities
+      div.modal-body
+          form(action = "/addExercise", method = "post")
+
+            input(type='hidden',name='objectID',value= user._id)
+            input(type='hidden',name='score',value= user.score)
+            input(type='hidden',name='username',value= user.username)
+            p
+              strong Input Activity
+            input.modalField(type="text", name="activityName")
+            p
+              strong Hours
+            input.modalField(type="number", name="hours", min="0", max="8")
+            p
+              strong Minutes
+            input.modalField(type="number", name="minutes", min="0", max="59")
+            div.modal-footer
+              button.btn.buttonInflate.exerciseModalSubmitButton(type="submit", value="Submit") Submit
+
+
+
+div.modal.fade(id="storeModal", role="dialog")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        button.close(type="button", data-dismiss="modal") &times;
+        h2.storeModalTitle.text-center.purpleText BG Buddy Store
+      div.modal-body#storeBody
+        table.table.table-bordered.storeTable
+          tr
+            td
+              div.col-xs-12
+                div.col-xs-6
+                  img.img-responsive.storeImage(src="http://images.all-free-download.com/images/graphiclarge/blank_t_shirt_clip_art_19042.jpg")
+                div.col-xs-6
+                  form(action = "/buy", method = "post")
+                    input(type='hidden',name='objectID',value= user.username)
+                    input(type='hidden',name='score',value= user.score)
+                    input(type='hidden',name='price',value= 250)
+                    input(type='hidden',name='userID',value= user._id)
+                    button.btn.purchaseButton(type="submit") 250pts
+            td
+              div.col-xs-12
+                div.col-xs-6
+                  img.img-responsive.storeImage(src="http://www.how-to-draw-funny-cartoons.com/images/cartoon-bed-6.gif")
+                div.col-xs-6
+                  form(action = "/buy", method = "post")
+                    input(type='hidden',name='objectID',value= user.username)
+                    input(type='hidden',name='score',value= user.score)
+                    input(type='hidden',name='price',value= 500)
+                    input(type='hidden',name='userID',value= user._id)
+                    button.btn.purchaseButton(type="submit") 500pts
+            td
+              div.col-xs-12
+                div.col-xs-6
+                  img.img-responsive.storeImage(src="http://iconbug.com/data/e6/128/c944410ba1b59aef3a9b616936465f67.png")
+                div.col-xs-6
+                  form(action = "/buy", method = "post")
+                    input(type='hidden',name='objectID',value= user.username)
+                    input(type='hidden',name='score',value= user.score)
+                    input(type='hidden',name='price',value= 250)
+                    input(type='hidden',name='userID',value= user._id)
+                    button.btn.purchaseButton(type="submit") 250pts
+          tr
+            td
+              div.col-xs-12
+                div.col-xs-6
+                  img.img-responsive.storeImage(src="http://cliparts.co/cliparts/kcK/B85/kcKB85z7i.png")
+                div.col-xs-6
+                  form(action = "/buy", method = "post")
+                    input(type='hidden',name='objectID',value= user.username)
+                    input(type='hidden',name='score',value= user.score)
+                    input(type='hidden',name='price',value= 100)
+                    input(type='hidden',name='userID',value= user._id)
+                    button.btn.purchaseButton(type="submit") 100pts
+            td
+              div.col-xs-12
+                div.col-xs-6
+                  img.img-responsive.storeImage(src="http://images.clipartpanda.com/dog-bone-clipart-dog-bone-clipart.png" )
+                div.col-xs-6
+                  form(action = "/buy", method = "post")
+                    input(type='hidden',name='objectID',value= user.username)
+                    input(type='hidden',name='score',value= user.score)
+                    input(type='hidden',name='price',value= 150)
+                    input(type='hidden',name='userID',value= user._id)
+                    button.btn.purchaseButton(type="submit") 150pts
+            td
+              div.col-xs-12
+                div.col-xs-6
+                  img.img-responsive.storeImage(src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=101102980")
+                div.col-xs-6
+                  form(action = "/buy", method = "post")
+                    input(type='hidden',name='objectID',value= user.username)
+                    input(type='hidden',name='score',value= user.score)
+                    input(type='hidden',name='price',value= 100)
+                    input(type='hidden',name='userID',value= user._id)
+                    button.btn.purchaseButton(type="submit", id="BGSubmitButton") 100pts

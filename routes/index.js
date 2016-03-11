@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 var router = express.Router();
 
@@ -247,6 +245,9 @@ router.post('/buy', function (req, res){
 });
 
 
+
+
+
 /* POST to Add User Service */
 router.post('/adduser', function(req, res) {
 
@@ -271,31 +272,49 @@ router.post('/adduser', function(req, res) {
 
 
 
-    // Submit to the DB
-    collection.insert({
-        "username" : username,
-        "email" : email,
-        "password" : pass,
-        "score":score,
-        "petName": petName,
-        "diabetesType": diabetesType,
-        "inventory": inventory,
-        "birthday": birthday,
-        "firstName": firstName,
-        "lastName": lastName,
-        "bgLevels": bgLevels
-    }, function (err, doc) {
-        if (err) {
-            // If it failed, return error
-            console.log("here")
-            res.send("There was a problem adding the information to the database.");
+
+    collection.find({ "username": username},{},function(e,docs){
+      var entry = 0
+      for (var d in docs)
+      {
+          entry = 1;
+      }
+
+      if (entry == 1)
+      {
+        console.log('username exists');
+      }
+      else {
+        console.log('username does not exist');
+        // Submit to the DB
+        collection.insert({
+            "username" : username,
+            "email" : email,
+            "password" : pass,
+            "score":score,
+            "petName": petName,
+            "diabetesType": diabetesType,
+            "inventory": inventory,
+            "birthday": birthday,
+            "firstName": firstName,
+            "lastName": lastName,
+            "bgLevels": bgLevels
+        }, function (err, doc) {
+            if (err) {
+                // If it failed, return error
+                console.log("here")
+                res.send("There was a problem adding the information to the database.");
+            }
+            else {
+                // And forward to success page
+                console.log("here");
+                res.redirect('signin');
+            }
+        });
         }
-        else {
-            // And forward to success page
-            console.log("here");
-            res.redirect('signin');
-        }
-    });
+      });
+
+
 });
 
 

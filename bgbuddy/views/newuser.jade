@@ -1,0 +1,93 @@
+html
+  head
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+   style.
+     @import url(http://fonts.googleapis.com/css?family=Aclonica);
+     body {
+     font-family: Century Gothic, sans-serif;
+     background-color: rgba(102,152,255,.3);
+     padding: 35px;
+     }
+
+     input {
+     text-align: center;
+     }
+     h1 {
+     font-family: Aclonica;
+     font-size: 50px;
+     color: skyBlue;
+     text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+     }
+     button {
+     font-family: Century Gothic, sans-serif;
+     border-radius: 5px;
+     width: 100px;
+     height: 35px;
+     }
+     .inputField
+      {
+        max-width: 250px;
+        width: 50%;
+      }
+
+      .radioButton
+        {
+          margin-left: 50px;
+        }
+
+      .submitButton
+        {
+          margin-top: 25px;
+        }
+
+  body
+    div
+      div
+        br
+        h1.text-center Sign Up Here!
+        div.container
+          div.jumbotron
+            form(action='/adduser', method = "post")
+              fieldset.form-group
+                label(for="usernameInput") Username
+                input.form-control.inputField(type='text', name='username', placeholder="Username")
+
+              fieldset.form-group
+                label(for="passwordInput") Password
+                input.form-control.inputField(type='password', name='password', placeholder="Password")
+
+              fieldset.form-group
+                label(for="emailInput") Email
+                input.form-control.inputField(type='email', name='email', placeholder="spongebob@bikinibottom.com")
+
+              fieldset.form-group
+                label(for="firstNameInput") First Name
+                input.form-control.inputField(type='text', name='firstName', placeholder="Spongebob")
+
+              fieldset.form-group
+                label(for="lastNameInput") Last Name
+                input.form-control.inputField(type='text', name='lastName', placeholder="Squarepants")
+
+              fieldset.form-group
+                label(for="birthdayInput") Birthday
+                input.form-control.inputField(type='date', name='birthday', placeholder="Big Bang")
+
+              div.form-group
+                label(for="typeInput") Diabetes Type
+                label.radioButton
+                  input.radio-inline(type="radio", name="typeInput", value="Type 1") 
+                  | Type 1
+                label.radioButton
+                  input.radio-inline(type="radio", name="typeInput", value="Type 2") 
+                  | Type 2
+
+              button.btn.btn-primary.submitButton(type='submit') Submit
+
+
+
+
+
+
+

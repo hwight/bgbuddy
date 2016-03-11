@@ -24,7 +24,6 @@ html
      .headerRow
       {
       padding: 0px 0px 20px 0px;
-      text-align: center;
       width: 100%; 
       margin: 0px 0px 0px 0px;
       border-bottom: 1px white solid;
@@ -86,28 +85,32 @@ html
                     transition: all 0.1s linear;
           }
           .nativeButton:hover
-            {
-              border: 2px purple solid;
-              color: purple;
-            }
-            .cloud
-              {
-                width: 100%;
-                margin-top: 30px;
-              }
+          {
+            border: 2px purple solid;
+            color: purple;
+          }
+          .littleBirds
+          {
+            width: 80%;
+            margin-top: 30px;
+            text-align: left;
+          }
+          .bigBirds
+          {
+            text-align: left;
+          }
 
   body
     div.row.headerRow.linearGradient
       div.col-md-12
         div.col-md-3
-          img(src="http://www.clipartbest.com/cliparts/Rid/g7R/Ridg7R4yT.png")
-        div.col-md-6
+          img.bigBirds(src="http://www.clipartbest.com/cliparts/Rid/g7R/Ridg7R4yT.png")
+        div.col-md-6.text-center
           h1 BGbuddy
           hr
           h4 A website to make diabetes a little more fun
         div.col-md-3
-          img.cloud(src="http://www.clipartbest.com/cliparts/jTx/rMa/jTxrMa8TE.png")
-
+          img.littleBirds(src="http://www.clipartbest.com/cliparts/Rid/g7R/Ridg7R4yT.png")
 
 
     div.row
@@ -115,8 +118,8 @@ html
         div.col-md-6
           div.buttonContainer
             form#formSignIn(name="adduser",method="get",action="/newuser")
-              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign Up!
+              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign Up
         div.col-md-6
           div.buttonContainer
             form#formSignUp(name="adduser",method="get",action="/signIn")
-              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign In!
+              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign In

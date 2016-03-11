@@ -261,17 +261,13 @@ router.post('/adduser', function(req, res) {
     var petName = req.body.petName;
     var diabetesType = req.body.diabetesType;
     var inventory = [];
-    var birthdayDay = req.body.birthdayDay;
-    var birthdayMonth = req.body.birthdayMonth;
-    var birthdayYear = req.body.birthdayYear;
+    var birthday = req.body.birthday;
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var bgLevels = [];
+    
     // Set our collection
     var collection = db.get('usercollection');
-
-
-    // Create a Date Object out of the birthday data!!!!!!
 
 
 

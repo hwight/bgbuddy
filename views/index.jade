@@ -1,8 +1,12 @@
 html
   head
+    title #{title} Sign In
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-responsive.min.css')
     link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(type="text/javascript", src="./js/jquery-1.12.2.min.js")
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
    style.
      @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
      body {
@@ -99,6 +103,10 @@ html
           {
             text-align: left;
           }
+          .tabRight
+            {
+              margin-right: 10px;
+            }
 
   body
     div.row.headerRow.linearGradient
@@ -108,18 +116,79 @@ html
         div.col-md-6.text-center
           h1 BGbuddy
           hr
-          h4 A website to make diabetes a little more fun
+          h4 An application to make diabetes a little more fun
         div.col-md-3
           img.littleBirds(src="http://www.clipartbest.com/cliparts/Rid/g7R/Ridg7R4yT.png")
-
-
     div.row
       div.col-md-12
         div.col-md-6
           div.buttonContainer
-            form#formSignIn(name="adduser",method="get",action="/newuser")
-              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign Up
+            button.btn.nativeButton.buttonInflate(data-toggle="modal", data-target="#SignInModal")#btnSubmit Sign in
         div.col-md-6
           div.buttonContainer
-            form#formSignUp(name="adduser",method="get",action="/signIn")
-              button.btn.nativeButton.buttonInflate#btnSubmit(type="submit") Sign In
+            button.btn.nativeButton.buttonInflate(data-toggle="modal", data-target="#SignUpModal")#btnSubmit Sign up
+
+
+
+
+
+  div.modal.fade(id="SignUpModal", role="dialog")
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button.close(type="button", data-dismiss="modal") &times;
+          h2.modal-title Sign up for BGbuddy
+        div.modal-body
+          form(action='/adduser', method = "post")
+            fieldset.form-group
+              label(for="username") Username
+              input.form-control.inputField(type='text', name='username', placeholder="Username")
+            fieldset.form-group
+              label(for="password") Password
+              input.form-control.inputField(type='password', name='password', placeholder="Password")
+
+            fieldset.form-group
+              label(for="email") Email
+              input.form-control.inputField(type='email', name='email', placeholder="spongebob@bikinibottom.com")
+
+            fieldset.form-group
+              label(for="firstName") First Name
+              input.form-control.inputField(type='text', name='firstName', placeholder="Spongebob")
+
+            fieldset.form-group
+              label(for="lastName") Last Name
+              input.form-control.inputField(type='text', name='lastName', placeholder="Squarepants")
+
+            fieldset.form-group
+              label(for="birthday") Birthday
+              input.form-control.inputField(type='date', name='birthday')
+
+            div.form-group
+              label.tabRight(for="diabetesType") Diabetes Type
+              label.radioButton
+                input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 1") 
+                | Type 1
+              label.radioButton
+                input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 2") 
+                | Type 2
+
+            button.btn.btn-primary.submitButton(type='submit') Submit
+
+
+  div.modal.fade(id="SignInModal", role="dialog")
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button.close(type="button", data-dismiss="modal") &times;
+          h2.modal-title Sign in to BGbuddy
+        div.modal-body
+          form#formAddUser(name="signin",method="post",action="/logIn")
+            fieldset.form-group
+              label(for="username") Username
+              input.form-control.inputField#inputUserName(type='text', name='username', placeholder="Username")
+            fieldset.form-group
+              label(for="password") Password
+              input.form-control.inputField#inputUserBday(type='password', name='password', placeholder="Password")
+            button.btn.btn-primary#btnSubmit(type="submit") submit
+
+

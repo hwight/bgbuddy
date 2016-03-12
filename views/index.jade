@@ -105,7 +105,7 @@ html
           }
           .tabRight
             {
-              margin-right: 10px;
+              margin-right: 20px;
             }
 
   body
@@ -167,7 +167,8 @@ html
               label.tabRight(for="diabetesType") Diabetes Type
               label.radioButton
                 input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 1") 
-                | Type 1
+                | Type 1 
+              span.tabRight
               label.radioButton
                 input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 2") 
                 | Type 2
@@ -189,6 +190,6 @@ html
             fieldset.form-group
               label(for="password") Password
               input.form-control.inputField#inputUserBday(type='password', name='password', placeholder="Password")
-            button.btn.btn-primary#btnSubmit(type="submit") submit
+            button.btn.btn-primary#btnSubmit(type="submit") Submit
 
 

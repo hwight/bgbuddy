@@ -6,7 +6,7 @@ var bloodsugar = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log("routed here");
-  res.render('index', {msg: '', username: "", email: "", "firstName" :"", "lastName" : "", "birthday": ""});
+  res.render('index', {msg: '', username: "", email: "", firstName :'', lastName : "", birthday: ""});
 
 });
 
@@ -191,7 +191,7 @@ router.post('/logIn', function(req, res) {
 
       for (var d in docs)
       {
-          entry = 1;e
+          entry = 1;
       }
 
       if (entry == 1)
@@ -311,8 +311,20 @@ router.post('/adduser', function(req, res) {
             }
             else {
                 // And forward to success page
-                console.log("here");
-                res.redirect('signin');
+                doc = {
+                    "username" : username,
+                    "level" : "",
+                    "email" : email,
+                    "score":score,
+                    "petName": petName,
+                    "diabetesType": diabetesType,
+                    "inventory": inventory,
+                    "birthday": birthday,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "bgLevels": bgLevels
+                }
+                res.render('homepage',{user: doc} );
             }
         });
         }

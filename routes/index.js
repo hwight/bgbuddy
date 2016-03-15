@@ -6,7 +6,8 @@ var bloodsugar = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log("routed here");
-  res.render('index', { title: 'BgBuddy' });
+  res.render('index', {msg: '', username: "", email: "", "firstName" :"", "lastName" : "", "birthday": ""});
+
 });
 
 /* GET Userlist page. */
@@ -19,6 +20,7 @@ router.get('/userlist', function(req, res) {
         });
     });
 });
+
 
 /* GET New User page. */
 router.get('/newuser', function(req, res) {
@@ -189,7 +191,7 @@ router.post('/logIn', function(req, res) {
 
       for (var d in docs)
       {
-          entry = 1;
+          entry = 1;e
       }
 
       if (entry == 1)
@@ -270,22 +272,24 @@ router.post('/adduser', function(req, res) {
     // Set our collection
     var collection = db.get('usercollection');
 
-
-
-
     collection.find({ "username": username},{},function(e,docs){
       var entry = 0
       for (var d in docs)
       {
           entry = 1;
+          console.log(d);
       }
 
       if (entry == 1)
       {
-        console.log('username exists');
+
+
+        res.render('index', {"msg": "Username taken. Be more creative.", "username": "", "email" :email, "petName":petName, "firstName" :firstName, "lastName" : lastName, "birthday": birthday});
+      }
+      else if (username == '' || email =='' || pass == '' || petName == '' || firstName == ''|| lastName == '' ){
+        res.render('index', {msg: "Aren't you forgetting something?", "username" : username, "email" :email, "petName":petName, "firstName" :firstName, "lastName" : lastName, "birthday": birthday});
       }
       else {
-        console.log('username does not exist');
         // Submit to the DB
         collection.insert({
             "username" : username,

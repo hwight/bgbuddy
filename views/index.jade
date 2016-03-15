@@ -2,11 +2,11 @@ html
   head
     title #{title} Sign In
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-responsive.min.css')
     link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
-    script(type="text/javascript", src="./js/jquery-1.12.2.min.js")
+    script(type="text/javascript", src="/javascripts/jquery.js")
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(type="text/javascript", src="/javascripts/signUpCheck.js")
    style.
      @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
      body {
@@ -28,7 +28,7 @@ html
      .headerRow
       {
       padding: 0px 0px 20px 0px;
-      width: 100%; 
+      width: 100%;
       margin: 0px 0px 0px 0px;
       border-bottom: 1px white solid;
       max-height: 500px;
@@ -38,7 +38,7 @@ html
       {
         width: 60%;
       }
-      .linearGradient 
+      .linearGradient
       {
           background: white; /* For browsers that do not support gradients */
           background: -webkit-linear-gradient(rgb(0, 191, 255), background: rgb(0, 180, 0));/* For Safari 5.1 to 6.0 */
@@ -46,7 +46,7 @@ html
           background: -moz-linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* For Firefox 3.6 to 15 */
           background: linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* Standard syntax */
       }
-      .radialGradient 
+      .radialGradient
       {
           background: white; /* For browsers that do not support gradients */
           background: -webkit-radial-gradient(white, rgb(0, 180, 0)); /* Safari 5.1 to 6.0 */
@@ -108,6 +108,7 @@ html
               margin-right: 20px;
             }
 
+
   body
     div.row.headerRow.linearGradient
       div.col-md-12
@@ -139,38 +140,39 @@ html
           button.close(type="button", data-dismiss="modal") &times;
           h2.modal-title Sign up for BGbuddy
         div.modal-body
+          p(id='resetFormSignUp') #{msg}
           form(action='/adduser', method = "post")
             fieldset.form-group
               label(for="username") Username
-              input.form-control.inputField(type='text', name='username', placeholder="Username")
+              input.form-control.inputField(type='text', name='username', placeholder="Username", value= username)
             fieldset.form-group
               label(for="password") Password
               input.form-control.inputField(type='password', name='password', placeholder="Password")
 
             fieldset.form-group
               label(for="email") Email
-              input.form-control.inputField(type='email', name='email', placeholder="spongebob@bikinibottom.com")
+              input.form-control.inputField(type='email',name='email', placeholder="spongebob@bikinibottom.com", value= email)
 
             fieldset.form-group
               label(for="firstName") First Name
-              input.form-control.inputField(type='text', name='firstName', placeholder="Spongebob")
+              input.form-control.inputField(type='text', name='firstName', placeholder="Spongebob", value= firstName)
 
             fieldset.form-group
               label(for="lastName") Last Name
-              input.form-control.inputField(type='text', name='lastName', placeholder="Squarepants")
+              input.form-control.inputField(type='text', name='lastName', placeholder="Squarepants", value= lastName)
 
             fieldset.form-group
               label(for="birthday") Birthday
-              input.form-control.inputField(type='date', name='birthday')
+              input.form-control.inputField(type='date', name='birthday', value= birthday)
 
             div.form-group
               label.tabRight(for="diabetesType") Diabetes Type
               label.radioButton
-                input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 1") 
-                | Type 1 
+                input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 1")
+                | Type 1
               span.tabRight
               label.radioButton
-                input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 2") 
+                input.radio-inline.tabRight(type="radio", name="diabetesType", value="Type 2")
                 | Type 2
 
             button.btn.btn-primary.submitButton(type='submit') Submit
@@ -191,5 +193,3 @@ html
               label(for="password") Password
               input.form-control.inputField#inputUserBday(type='password', name='password', placeholder="Password")
             button.btn.btn-primary#btnSubmit(type="submit") Submit
-
-

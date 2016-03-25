@@ -185,6 +185,7 @@ html
           button.close(type="button", data-dismiss="modal") &times;
           h2.modal-title Sign in to BGbuddy
         div.modal-body
+          p(id='resetFormSignIn') #{msg1}
           form#formAddUser(name="signin",method="post",action="/logIn")
             fieldset.form-group
               label(for="username") Username

@@ -6,7 +6,7 @@ var bloodsugar = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log("routed here");
-  res.render('index', {msg: '', username: "", email: "", firstName :'', lastName : "", birthday: ""});
+  res.render('index', {msg: '',msg1:'', username: "", email: "", firstName :'', lastName : "", birthday: ""});
 
 });
 
@@ -203,7 +203,7 @@ router.post('/logIn', function(req, res) {
         res.render('homepage', {user : userData});
       }
       else{
-        res.redirect('signin');
+        res.render('index', {msg1: "Wrong username/password. Try harder"});
       }
     });
 
@@ -284,10 +284,10 @@ router.post('/adduser', function(req, res) {
       {
 
 
-        res.render('index', {"msg": "Username taken. Be more creative.", "username": "", "email" :email, "petName":petName, "firstName" :firstName, "lastName" : lastName, "birthday": birthday});
+        res.render('index', {"msg": "Username taken. Be more creative.",msg1:'', "username": "", "email" :email, "petName":petName, "firstName" :firstName, "lastName" : lastName, "birthday": birthday});
       }
       else if (username == '' || email =='' || pass == '' || petName == '' || firstName == ''|| lastName == '' ){
-        res.render('index', {msg: "Aren't you forgetting something?", "username" : username, "email" :email, "petName":petName, "firstName" :firstName, "lastName" : lastName, "birthday": birthday});
+        res.render('index', {msg: "Aren't you forgetting something?",msg1:'', "username" : username, "email" :email, "petName":petName, "firstName" :firstName, "lastName" : lastName, "birthday": birthday});
       }
       else {
         // Submit to the DB

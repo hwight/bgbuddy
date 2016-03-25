@@ -4,5 +4,8 @@ $(window).load(function(){
         if (signUpMsg){
           jQuery('#SignUpModal').modal('show');
         }
-        console.log("here");
+        var signInMsg = $('#resetFormSignIn').text();
+        if (signInMsg){
+          jQuery('#SignInModal').modal('show');
+        }
     });

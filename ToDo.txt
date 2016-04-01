@@ -1,0 +1,5 @@
+To do list:
+
+Merge sign in and sign up pages
+	Perhaps use jquery data picker instead of standard
+Google analytics

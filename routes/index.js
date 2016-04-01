@@ -6,9 +6,10 @@ var bloodsugar = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log("routed here");
-  res.render('index', {msg: '',msg1:'', username: "", email: "", firstName :'', lastName : "", birthday: ""});
+  res.render('dashboard', {msg: '',msg1:'', username: "", email: "", firstName :'', lastName : "", birthday: ""});
 
 });
+
 
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {

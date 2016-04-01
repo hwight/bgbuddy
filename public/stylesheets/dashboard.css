@@ -1,0 +1,148 @@
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+body
+{
+    font-family: "Time New Roman", serif;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+h1
+{
+    font-family: "PT Sans Narrow", serif;
+    color: black;
+}
+
+section
+{
+    display: block;
+    padding-top: 55px; 
+}
+
+#Home
+{
+    background: blue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(0, 191, 255),rgb(0, 180, 0));/* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(0, 191, 255), rgb(0, 180, 0)); /* Standard syntax */
+}
+
+#ExerciseLog
+{
+    background: green; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(0, 180, 0),orange);/* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(0, 180, 0), orange); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(0, 180, 0), orange); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(0, 180, 0), orange); /* Standard syntax */    
+}
+
+#FoodLog
+{
+    background: orange; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(orange, rgb(153,50,204));/* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(orange, rgb(153,50,204)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(orange, rgb(153,50,204)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(orange, rgb(153,50,204)); /* Standard syntax */       
+}
+
+#BGLog
+{
+    background: purple; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(153,50,204), rgb(0,206,209));/* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(153,50,204), rgb(0,206,209)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(153,50,204), rgb(0,206,209)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(153,50,204), rgb(0,206,209)); /* Standard syntax */       
+}
+
+#PetStore
+{
+    background: blue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(0,206,209), rgb(0,255,127));/* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(0,206,209), rgb(0,255,127)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(0,206,209), rgb(0,255,127)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(0,206,209), rgb(0,255,127)); /* Standard syntax */       
+}
+
+#About
+{
+    background: rgb(0,255,127);
+}
+
+
+.navBar
+{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 55px;
+    background: rgba(0, 0, 0, .2);
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    overflow: hidden;
+    border-bottom: 1px black solid;
+}
+
+.navBar > li
+{
+    height: 100%;
+    display: inline;
+    text-align: center;
+    min-width: 80px;
+    margin-bottom: 0px;
+
+    -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+}
+
+.navBar > li > a
+{
+    display: block;
+    text-decoration: none;
+    color: black;
+    text-align: text-center;
+    padding: 15px 10px;
+    margin-bottom: 0px;
+}
+
+.flexContainer
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floatRight
+{
+    float: right;
+}
+
+.floatLeft
+{
+    float: left;
+}
+
+.active
+{
+    background: rgba(250, 250, 250, .8);
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+
+}
+
+li.active > a
+{
+    color: black;
+}
+
+
+
+

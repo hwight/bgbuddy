@@ -1,0 +1,55 @@
+doctype
+html
+    head
+        title #{title} BGBuddy
+        link(rel='stylesheet', href='/stylesheets/dashboard.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+        script(type='text/javascript', src='/javascripts/dashboardStyles.js')
+
+    body
+        nav#navBar
+            ul.navBar
+                li.floatLeft.active
+                    a(href="#Home", onclick="manageNavbar(this); return true;") BGbuddy
+                li.floatLeft
+                    a(href="#About", onclick="manageNavbar(this); return true;") About
+                li.floatRight
+                    a(href="#PetStore", onclick="manageNavbar(this); return true;") Store
+                li.floatRight
+                    a(href="#BGLog", onclick="manageNavbar(this); return true;") BG
+                li.floatRight
+                    a(href="#FoodLog", onclick="manageNavbar(this); return true;") Food
+                li.floatRight
+                    a(href="#ExerciseLog", onclick="manageNavbar(this); return true;") Exercise
+
+        section#Home
+            h1 Hey there
+            h2 Merp
+
+        section#ExerciseLog
+            h1 Hey there
+            h2 Merp
+
+        section#FoodLog
+            h1 Hey there
+            h2 Merp
+
+        section#BGLog
+            h1 Hey there
+            h2 Merp
+
+        section#PetStore
+            h1 Hey there
+            h2 Merp
+
+        section#About
+            h1 Hey there
+            h2 Merp
+
+
+
+
+
+
+
+

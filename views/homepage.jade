@@ -4,16 +4,17 @@ html
     title #{title} BGbuddy
     link(rel='stylesheet', href='/stylesheets/index.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-responsive.min.css')
     link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(type="text/javascript", src="https://www.gstatic.com/charts/loader.js")
     script(type="text/javascript", src="/javascripts/BMI.js")
     script(type="text/javascript", src="/javascripts/index.js")
+    script(type='text/javascript', src='/javascripts/dashboardStyles.js')
+
   body
     block content
-      nav.navbar.navbar-default.navbar-fixed-top.topnav.navBackground(role="navigation")
+      nav.navbar.navbar-default.navbar-fixed-top.topnav.navBackground(role="navigation")#navBar
         div.container.topnav
           div.navbar-header
             a.navbar-brand(href="#Home") BGbuddy
@@ -33,7 +34,7 @@ html
 
 
       div#Home
-        div.container-fluid
+        div.container
           div.col-md-12
             div.row
               div.col-md-3
@@ -70,7 +71,7 @@ html
                     h2.points #{user.score} pts
 
       div#ExerciseLog
-        div.container-fluid.fullHeight
+        div.container.fullHeight
           div.col-md-12
             div.col-md-6
               div.jumbotron.fullHeight
